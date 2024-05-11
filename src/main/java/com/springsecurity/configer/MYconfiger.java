@@ -48,11 +48,14 @@ public class MYconfiger  {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable()
-		.authorizeHttpRequests().requestMatchers("/public")
-		.permitAll().anyRequest().authenticated()
+	.authorizeRequests()
+	//.requestMatchers("/admin").hasRole("ADMIN")
+//		.requestMatchers("/normal").hasRole("NORMAL")
+//		.requestMatchers("/public").permitAll()
+		.anyRequest()
+		.authenticated()
 		.and().formLogin();
 		return http.build();
-		
 	}
 	
 	
